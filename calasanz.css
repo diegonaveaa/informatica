@@ -1,10 +1,17 @@
-h1´{
+/*selector de etiqueta*/
+h1{
     color:red;
 }
 h2{
     color:blue;
 }
+/*selector de clase*/
 .oscuro{
     background-color: black;
     color: white;
+}
+    /*Selector ID*/
+      #biografia{
+        background-color:gainsboro;
+        color: darkred;
 }
