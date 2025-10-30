@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Verificación de Edad</title>
+    <style>
+        /* Estilos básicos para la página */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            background-color: #f4f7f6;
+        }
+        button {
+            padding: 12px 25px;
+            font-size: 1.1em;
+            cursor: pointer;
+            background-color: #007bff;
+            color: white;
+            border: none;
+            border-radius: 6px;
+            transition: background-color 0.3s;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        button:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+<body>
+
+    <button id="verificarEdadBtn">Verificar Edad</button>
+
+    <script>
+        // Función principal para verificar la edad
+        function verificarAcceso() {
+            // 1. Pedir la edad al usuario usando prompt()
+            const entradaEdad = prompt("Por favor, ingresa tu edad:");
+
+            // 2. Validar si el usuario canceló el prompt o no ingresó nada
+            if (entradaEdad === null || entradaEdad.trim() === "") {
+                alert("Verificación cancelada o no se ingresó un valor.");
+                return; // Detiene la función
+            }
+
+            // 3. Convertir el valor ingresado a un número entero
+            const edad = parseInt(entradaEdad.trim());
+
+            // 4. Usar condicionales para validar la entrada y mostrar el mensaje
+            
+            // a) Validación de si es un número válido (NaN o negativo)
+            if (isNaN(edad) || edad < 0) {
+                alert("❌ Entrada no válida. Por favor, ingresa un número positivo.");
+                
+            // b) Condición para el acceso permitido (MAYOR o igual a 18)
+            } else if (edad >= 18) {
+                alert("✅ Acceso PERMITIDO. ¡Bienvenido/a!");
+                
+            // c) Condición para el acceso denegado (MENOR de 18)
+            } else {
+                alert("🛑 Acceso DENEGADO. Debes ser mayor de 18 años para ingresar.");
+            }
+        }
+
+        // Obtener el botón y asignarle la función al evento 'click'
+        document.getElementById('verificarEdadBtn').addEventListener('click', verificarAcceso);
+    </script>
+
+</body>
+</html>

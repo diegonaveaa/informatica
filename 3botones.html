@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cambio de Colores</title>
+    <style>
+        /* CSS Básico para centrar y estilizar los botones */
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            margin: 0;
+            transition: background-color 0.5s, color 0.5s; /* Transición suave */
+            color: #333; /* Color de texto inicial */
+            background-color: #f0f0f0; /* Color de fondo inicial */
+        }
+
+        h1 {
+            margin-bottom: 30px;
+        }
+
+        .contenedor-botones button {
+            padding: 10px 20px;
+            font-size: 1em;
+            margin: 0 10px;
+            cursor: pointer;
+            border: none;
+            border-radius: 5px;
+            transition: opacity 0.3s;
+        }
+
+        .contenedor-botones button:hover {
+            opacity: 0.8;
+        }
+
+        /* Estilos específicos de los botones */
+        #btn-azul {
+            background-color: #007bff;
+            color: white;
+        }
+        #btn-verde {
+            background-color: #28a745;
+            color: white;
+        }
+        #btn-oscuro {
+            background-color: #343a40;
+            color: white;
+        }
+    </style>
+</head>
+<body>
+
+    <h1 id="titulo">Presiona un botón para cambiar el tema de la página</h1>
+
+    <div class="contenedor-botones">
+        <button id="btn-azul">Tema Azul</button>
+        <button id="btn-verde">Tema Verde</button>
+        <button id="btn-oscuro">Tema Oscuro</button>
+    </div>
+
+    <script>
+        // Obtener el elemento que queremos cambiar de estilo (el cuerpo de la página)
+        const cuerpoPagina = document.body;
+
+        // Función principal que cambia los colores
+        function cambiarColores(colorFondo, colorTexto) {
+            cuerpoPagina.style.backgroundColor = colorFondo;
+            cuerpoPagina.style.color = colorTexto;
+        }
+
+        // 1. Asignar el evento 'click' al botón Azul
+        document.getElementById('btn-azul').addEventListener('click', function() {
+            // Fondo Azul Brillante, Texto Blanco
+            cambiarColores('#2196F3', '#FFFFFF');
+        });
+
+        // 2. Asignar el evento 'click' al botón Verde
+        document.getElementById('btn-verde').addEventListener('click', function() {
+            // Fondo Verde Esmeralda, Texto Oscuro
+            cambiarColores('#E8F5E9', '#1B5E20');
+        });
+
+        // 3. Asignar el evento 'click' al botón Oscuro
+        document.getElementById('btn-oscuro').addEventListener('click', function() {
+            // Fondo Negro/Gris Oscuro, Texto Blanco
+            cambiarColores('#212121', '#F5F5F5');
+        });
+    </script>
+
+</body>
+</html>
