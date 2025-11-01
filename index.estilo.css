@@ -3,13 +3,13 @@ body {
     background-color: rgb(192, 188, 188);
     }
     header, footer {
-    background-color: black;
+    background-color: rgb(26, 66, 10);
     color: white;
     text-align: center;
     padding: 0.5rem;
     }
     nav {
-    background-color: red;
+    background-color: rgb(10, 233, 129);
     padding: 1rem;
     display: flex;
     justify-content: center;
@@ -26,11 +26,11 @@ display: flex;
 gap: 2rem;
 }
 strong {
-color: red;
+color: rgb(74, 204, 22);
 }
 blockquote{
 font-style: italic;
-color: red;
+color: rgb(18, 197, 57);
 }
 article {
 background-color: white;
@@ -41,7 +41,7 @@ margin-bottom: 1rem;
 aside {
 background-color: white;
 padding: 1rem;
-border-left: 4px solid red;
+border-left: 4px solid rgb(17, 218, 10);
 }
 th {
 background-color: rgb(192, 188, 188);
@@ -57,10 +57,10 @@ border-collapse: collapse;
 img {
 max-width: 100%;
 margin-top: 1rem;
-border: 4px solid #f44336;
+border: 4px solid #17990b;
 border-radius: 8px;
  }
 footer a {
-color: red;
+color: rgb(15, 189, 87);
 text-decoration: none;
 }
