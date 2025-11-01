@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Juego de Adivinanza</title>
+</head>
+<body>
+
+    <h1>Adivina el Número Secreto</h1>
+    
+    <button onclick="iniciarJuego()">Jugar</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        // === 1. Lógica del Juego en JavaScript ===
+
+        // **Número Secreto definido en el código**
+        // Puedes cambiar este valor al que desees.
+        const NUMERO_SECRETO = 7; 
+        
+        // Referencia al elemento donde se mostrará el resultado
+        const resultadoElemento = document.getElementById('resultado');
+
+        /**
+         * Función que inicia la secuencia del juego al ser llamada por el botón.
+         */
+        function iniciarJuego() {
+            // Limpiar el mensaje de resultado anterior
+            resultadoElemento.textContent = "";
+
+            // 1. Pedir al usuario que adivine mediante el cuadro prompt()
+            const respuestaUsuario = prompt("¡Adivina el número! Introduce un número entero (del 1 al 10, por ejemplo):");
+
+            // Verificar si el usuario presionó Cancelar o no ingresó nada
+            if (respuestaUsuario === null || respuestaUsuario.trim() === "") {
+                resultadoElemento.textContent = "Juego cancelado. ¡Vuelve a intentarlo!";
+                return; // Termina la función aquí
+            }
+
+            // 2. Convertir la respuesta del usuario a un número
+            const numeroAdivinado = parseInt(respuestaUsuario);
+
+            // 3. Validar si es un número válido
+            if (isNaN(numeroAdivinado)) {
+                resultadoElemento.textContent = "Error: Por favor, introduce un número válido.";
+                return;
+            }
+
+            // 4. Comparar la respuesta con el número secreto y mostrar el mensaje
+            let mensaje;
+            if (numeroAdivinado === NUMERO_SECRETO) {
+                mensaje = `¡Felicidades! Acertaste. El número secreto era ${NUMERO_SECRETO}.`;
+                resultadoElemento.style.color = "green";
+            } else {
+                mensaje = `Fallaste. Intentaste con ${numeroAdivinado}. El número secreto era ${NUMERO_SECRETO}.`;
+                resultadoElemento.style.color = "red";
+            }
+
+            // Mostrar el mensaje en el elemento <p id="resultado">
+            resultadoElemento.textContent = mensaje;
+        }
+    </script>
+</body>
+</html>
