@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Confirmación de Asistencia a la Fiesta</title>
+</head>
+<body>
+
+    <h1>Confirmación de Asistencia a la Fiesta de Fin de Año</h1>
+    
+    <button onclick="capturarDatos()">Confirmar Asistencia</button>
+
+    <div id="resumen">
+        Pulsa el botón para iniciar el registro.
+    </div>
+
+    <script>
+        // Referencia al elemento donde se mostrará el resumen
+        const resumenElemento = document.getElementById('resumen');
+
+        /**
+         * Función que captura el nombre y la asistencia del estudiante.
+         */
+        function capturarDatos() {
+            
+            // 1. Capturar el nombre del estudiante (mediante prompt)
+            const nombre = prompt("Por favor, ingresa tu nombre completo:");
+            
+            // Si el usuario cancela o no ingresa nombre, salimos
+            if (nombre === null || nombre.trim() === "") {
+                resumenElemento.innerHTML = "Registro cancelado. Por favor, ingresa tu nombre.";
+                return;
+            }
+
+            // 2. Capturar si asistirá (mediante confirm)
+            // La función confirm() devuelve TRUE si se pulsa Aceptar y FALSE si se pulsa Cancelar
+            const asistira = confirm(`Hola ${nombre}, ¿confirmas que asistirás a la fiesta de fin de año? (Aceptar para SÍ, Cancelar para NO)`);
+            
+            // 3. Evaluar el resultado y construir el mensaje
+            let mensaje, claseCSS;
+
+            if (asistira) {
+                // Si el usuario presionó Aceptar (TRUE)
+                mensaje = `¡Gracias, ${nombre}! ASISTIRÁS a la fiesta. ¡Te esperamos!`;
+                claseCSS = 'asiste'; // Clase CSS para texto verde
+            } else {
+                // Si el usuario presionó Cancelar (FALSE)
+                mensaje = `De acuerdo, ${nombre}. NO ASISTIRÁS a la fiesta. ¡Esperamos verte el próximo año!`;
+                claseCSS = 'noAsiste'; // Clase CSS para texto rojo
+            }
+
+            // 4. Mostrar el resumen en la página
+            resumenElemento.innerHTML = `<span class="${claseCSS}">${mensaje}</span>`;
+        }
+    </script>
+</body>
+</html>
