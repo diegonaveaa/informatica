@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora de Promedio</title>
+</head>
+<body>
+
+    <h1>Calculadora de Promedio de Notas</h1>
+    
+    <button onclick="calcularPromedio()">Calcular promedio</button>
+
+    <p id="resultado"></p>
+
+    <script>
+        // La nota mínima para aprobar se define en 6
+        const NOTA_MINIMA_APROBACION = 6;
+        
+        // Referencia al elemento donde se mostrará el resultado
+        const resultadoElemento = document.getElementById('resultado');
+
+        /**
+         * Función principal que pide las notas, calcula el promedio y evalúa el resultado.
+         */
+        function calcularPromedio() {
+            // Limpiar resultados anteriores
+            resultadoElemento.textContent = "";
+            resultadoElemento.style.backgroundColor = 'transparent';
+
+            // 1. Pedir las tres notas al usuario usando prompt()
+            const nota1Str = prompt("Ingresa la primera nota:");
+            const nota2Str = prompt("Ingresa la segunda nota:");
+            const nota3Str = prompt("Ingresa la tercera nota:");
+
+            // 2. Convertir las respuestas a números (usando parseFloat para permitir decimales)
+            const nota1 = parseFloat(nota1Str);
+            const nota2 = parseFloat(nota2Str);
+            const nota3 = parseFloat(nota3Str);
+            
+            // 3. Validación de las entradas
+            if (isNaN(nota1) || isNaN(nota2) || isNaN(nota3) || 
+                nota1Str === null || nota2Str === null || nota3Str === null) 
+            {
+                resultadoElemento.textContent = "Error: Debes ingresar tres números válidos.";
+                resultadoElemento.style.backgroundColor = '#f8d7da'; // Color de error
+                resultadoElemento.style.color = '#721c24';
+                return; // Detiene la ejecución si hay un error
+            }
+
+            // 4. Calcular el promedio
+            const sumaNotas = nota1 + nota2 + nota3;
+            const promedio = sumaNotas / 3;
+
+            // Redondear el promedio a dos decimales para una mejor presentación
+            const promedioFormateado = promedio.toFixed(2); 
+
+            // 5. Evaluar el resultado usando condicionales
+            let mensajeResultado;
+            
+            // Condicional: ¿Promedio mayor o igual a 6?
+            if (promedio >= NOTA_MINIMA_APROBACION) {
+                mensajeResultado = `¡Aprobado!  Promedio: ${promedioFormateado}`;
+                resultadoElemento.style.backgroundColor = '#d4edda'; // Fondo verde para aprobado
+                resultadoElemento.style.color = '#155724';
+            } else {
+                mensajeResultado = `Desaprobado.  Promedio: ${promedioFormateado}`;
+                resultadoElemento.style.backgroundColor = '#f8d7da'; // Fondo rojo para desaprobado
+                resultadoElemento.style.color = '#721c24';
+            }
+
+            // 6. Mostrar el mensaje en la página
+            resultadoElemento.textContent = mensajeResultado;
+        }
+    </script>
+</body>
+</html>
